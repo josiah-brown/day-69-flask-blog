@@ -18,7 +18,7 @@ Bootstrap(app)
 
 # CONNECT TO DB
 # if os.environ.get("DATABASE_URL1"):
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL1")
 # else:
 #     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///blog.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -71,7 +71,7 @@ class Comment(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey("blog_posts.id"))
     parent_post = relationship("BlogPost", back_populates="comments")
     text = db.Column(db.Text, nullable=False)
-# db.create_all()
+db.create_all()
 
 
 # Create admin-only decorator
